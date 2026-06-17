@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  /* Redefine Slate to a warm, cozy light-sepia/linen tea paper palette for LIGHT MODE */
+  --color-slate-50: #120904;
+  --color-slate-100: #1F130A;
+  --color-slate-150: #2E1E12;
+  --color-slate-200: #422D1B;
+  --color-slate-300: #5A3F29;
+  --color-slate-400: #74553B;
+  --color-slate-500: #8E6D50;
+  --color-slate-600: #A88767;
+  --color-slate-700: #C2A486;
+  --color-slate-800: #DCBFA4;
+  --color-slate-850: #E7DAC7;
+  --color-slate-900: #F2EAE1;
+  --color-slate-950: #FAF7F2;
+
+  /* Redefine white to deep coffee ink to keep all text-white elements perfectly readable */
+  --color-white: #1F130A;
+
+  /* Map Indigo to rich warm golden honey & sienna accents (highly readable on light background) */
+  --color-indigo-50: #fffbeb;
+  --color-indigo-100: #fef3c7;
+  --color-indigo-200: #fde68a;
+  --color-indigo-300: #fcd34d;
+  --color-indigo-400: #b45309;
+  --color-indigo-450: #d97706;
+  --color-indigo-500: #ea580c;
+  --color-indigo-550: #92400e;
+  --color-indigo-600: #78350f;
+  --color-indigo-700: #451a03;
+  --color-indigo-800: #2c0e01;
+  --color-indigo-900: #1c0a00;
+  --color-indigo-950: #fef3c7;
+
+  /* Map Sky to comforting autumn orange & reddish peach tones */
+  --color-sky-50: #fff7ed;
+  --color-sky-100: #ffedd5;
+  --color-sky-200: #fed7aa;
+  --color-sky-300: #fdba74;
+  --color-sky-400: #c2410c;
+  --color-sky-500: #9a3412;
+  --color-sky-600: #7c2d12;
+  --color-sky-700: #4a1d0f;
+  --color-sky-850: #ffedd5;
+
+  /* Map Purple to warm, comforting rose, peach & dark berry red accents */
+  --color-purple-50: #fff1f2;
+  --color-purple-100: #ffe4e6;
+  --color-purple-200: #fecdd3;
+  --color-purple-300: #fda4af;
+  --color-purple-400: #be123c;
+  --color-purple-500: #9f1239;
+  --color-purple-600: #881337;
+  --color-purple-700: #4c0519;
+  --color-purple-950: #ffe4e6;
+}
