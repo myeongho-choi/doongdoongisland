@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
-import { Search, Eye, Calendar, BookOpen, Clock, FileText, ArrowRight, Sparkles } from 'lucide-react';
-
-interface DevLogTabProps {
-  portfolioMode: boolean;
-}
+import { Search, Eye, Calendar, BookOpen, Clock, FileText, ArrowRight, Sparkles, ArrowLeft } from 'lucide-react';
 
 interface DevLog {
   id: string;
   title: string;
   date: string;
   views: number;
-  tag: string;
-  category: string;
   intro: string;
   details: string;
   bullets: string[];
@@ -19,163 +13,135 @@ interface DevLog {
 
 const DEV_LOGS_DATA: DevLog[] = [
   {
-    id: "DEV-07",
-    title: "개발일지 #07 - OBT를 준비하며",
-    date: "2026-06-15",
-    views: 1240,
-    tag: "OBT 준비",
-    category: "안정화",
-    intro: "안녕하세요.\n\nOBT를 앞두고 게임 전반의 완성도를 높이기 위한 마무리 작업을 진행했습니다.\n특히 플레이어가 가장 자주 이용하게 될 상점과 거래 기능을 중심으로 UI 개선과 안정성 향상 작업을 진행했습니다.",
-    details: "또한 거래 과정에서 발생할 수 있는 오류를 최소화하고, 보다 직관적인 인터페이스를 제공하기 위해 상점 디자인을 전면 개편했습니다.\n이번 작업을 통해 OBT 환경에서 보다 안정적인 플레이 경험을 제공할 수 있도록 준비를 마쳤습니다.",
+    id: "DEV-08",
+    title: "개발일지 #08 - OBT 이후 버그 수정 과정",
+    date: "2026-06-16",
+    views: 980,
+    intro: "안녕하세요.\n둥둥아일랜드입니다.\n\nOBT 진행 이후 확인된 오류와 불편 사항을 바탕으로 안정성 개선 작업을 진행했습니다.\n\n상점에서는 일부 아이템의 가격이 정상적으로 표시되지 않거나, 보유하지 않은 아이템을 판매할 수 있던 문제를 수정했습니다.\n꾸미기 모드에서는 오브젝트 회수, 초기화, 인벤 수량 표시, 고정 건축물 교체 과정에서 발생하던 오류를 점검했습니다.\n\n이 외에도 도감 슬롯 클릭, 창 크기 조절, UI 클릭 처리, 퀘스트 슬롯 표시 등 플레이 중 발견된 문제를 수정하며 전반적인 사용성을 개선했습니다.\n\n앞으로도 테스트 과정에서 확인되는 문제들을 빠르게 정리하고, 안정적인 플레이 환경을 만들 수 있도록 개선을 이어가겠습니다.",
+    details: "",
     bullets: [
-      "상점 UI 리뉴얼",
-      "카테고리 버튼 개선",
-      "슬롯 디자인 개선",
-      "드롭다운 UI 개선",
-      "거래 팝업 개선",
-      "중복 입력 방지 기능 추가",
-      "테마 판매 기능 개선",
-      "기본 아이템 지급 기능 개선",
-      "수량 표시 기능 개선",
-      "거래 관련 오류 수정"
+      "구매 가격 동기화 오류 대조 수정",
+      "창 크기 비율 조절 및 캔버스 리사이즈 오류 수정",
+      "상점 진입 시 특정 상태에서의 버튼 클릭 오류 보완",
+      "꾸미기 영지 인벤토리 특정 아이템 보유 수량 표기 오류 수정",
+      "도감 특정 슬롯 단지 클릭 시 동작 정체 반응 오류 등 OBT 이후 발견된 문제 수정"
+    ]
+  },
+  {
+    id: "DEV-07",
+    title: "개발일지 #07 - 설정창과 도움말 UI 개선",
+    date: "2026-06-10",
+    views: 1120,
+    intro: "안녕하세요.\n둥둥아일랜드입니다.\n\n이번 작업에서는 설정창과 도움말 UI를 중심으로 편의 기능을 개선했습니다.\n\n먼저 사운드 조절 슬라이더와 음소거 버튼이 정상적으로 동작하도록 수정하고, 설정창 UI를 최신 구조에 맞게 정리했습니다.\n또한 플레이어가 각 기능을 더 쉽게 이해할 수 있도록 도움말 UI를 추가했으며, 언어 설정에 따라 도움말 내용이 변경되도록 번역 기능도 함께 적용했습니다.\n\n처음 플레이하는 유저도 기능을 어렵지 않게 이해할 수 있도록 안내 요소를 보강하는 데 초점을 맞췄습니다.",
+    details: "",
+    bullets: [
+      "설정창 배경 음악 / 효과음 사운드 분리 슬라이더 수정",
+      "원클릭 전체 음소거 버튼 컨트롤 정상화 적용",
+      "설정창 인터랙티브 UI 전면 변경",
+      "이용 언어 설정 변환에 따른 도움말 세부 설명 번역 로케일 추가"
     ]
   },
   {
     id: "DEV-06",
-    title: "개발일지 #06 - 꾸미기 콘텐츠의 완성도를 높이며",
-    date: "2026-05-18",
-    views: 1450,
-    tag: "꾸미기",
-    category: "콘텐츠",
-    intro: "안녕하세요.\n\n이번 개발에서는 플레이어만의 공간을 더욱 자유롭게 꾸밀 수 있도록 편집 모드 개선에 집중했습니다.",
-    details: "배치 기능뿐만 아니라 카메라 이동, 환경 연출, 오디오 시스템까지 개선하여 꾸미기 콘텐츠의 몰입감을 높이고자 했습니다.\n또한 창고 구조를 개편하여 보유한 아이템을 보다 효율적으로 관리할 수 있도록 개선했습니다.",
+    title: "개발일지 #06 - 우편함 기능 구현",
+    date: "2026-05-28",
+    views: 1250,
+    intro: "안녕하세요.\n둥둥아일랜드입니다.\n\n이번 작업에서는 게임 내에서 공지와 보상을 전달할 수 있는 우편함 기능을 구현했습니다.\n\n우편함을 통해 플레이어에게 보상형 우편과 공지형 우편을 발송할 수 있도록 구성했으며, 개발 단계에서는 테스트를 위해 우편을 직접 발행할 수 있는 기능도 함께 추가했습니다.\n이후 우편함 목록이 최신순으로 정렬되도록 개선하고, 보상 수령 후에도 수령 내역을 확인할 수 있도록 수정했습니다.\n\n우편함은 업데이트 안내, 점검 보상, 이벤트 보상 등 운영 과정에서 자주 활용될 수 있는 기능으로 설계했습니다.",
+    details: "",
     bullets: [
-      "카메라 이동 기능 추가",
-      "편집 모드 조작 개선",
-      "환경 연출 강화",
-      "계절 오브젝트 추가",
-      "계절 효과 개선",
-      "음악 미리듣기 기능 추가",
-      "오디오 페이드 효과 적용",
-      "익명 로그인 기능 적용",
-      "창고 구조 개편",
-      "각종 편집 모드 버그 수정"
+      "보상형/공지형 우편함 구현",
+      "개발자 전용 우편 발행 기능",
+      "우편함 최신순 정렬",
+      "보상 수령 시 내역 보존",
+      "만료일 표시"
     ]
   },
   {
     id: "DEV-05",
-    title: "개발일지 #05 - 수집과 꾸미기의 재미를 더하다",
-    date: "2026-04-20",
-    views: 1190,
-    tag: "수집 & 데코",
-    category: "수집",
-    intro: "안녕하세요.\n\n이번 개발에서는 수집 콘텐츠와 꾸미기 콘텐츠의 완성도를 높이는 작업을 진행했습니다.\n도감은 플레이어가 꾸준히 성장한 결과를 확인하는 공간인 만큼 정보 확인이 더욱 편리하도록 개선했습니다.",
-    details: "또한 꾸미기 콘텐츠에서는 배경 전환 기능과 오브젝트 회전 기능을 추가하여 보다 자유로운 공간 연출이 가능하도록 개선했습니다.\n플레이어의 개성을 표현할 수 있는 코스튬 시스템도 지속적으로 다듬고 있습니다.",
+    title: "개발일지 #05 - 퀘스트와 도감 기능 제작",
+    date: "2026-04-15",
+    views: 1390,
+    intro: "안녕하세요.\n둥둥아일랜드입니다.\n\n이번 작업에서는 플레이어가 게임 안에서 다음 목표를 더 쉽게 확인할 수 있도록 퀘스트와 도감 기능을 개선했습니다.\n\n퀘스트 매니저와 퀘스트 UI를 구현하고, 낚시 플레이와 퀘스트 진행이 자연스럽게 연결되도록 작업했습니다.\n또한 도감에서는 물고기 정보, 최고 기록, 정렬 기능을 더 쉽게 확인할 수 있도록 팝업창과 슬롯 UI를 수정했습니다.\n\n퀘스트는 플레이 방향을 잡아주는 역할을, 도감은 수집 현황을 확인하는 역할을 하도록 구성해 플레이 흐름이 끊기지 않도록 개선했습니다.",
+    details: "",
     bullets: [
-      "도감 기본 아이템 자동 해금",
-      "도감 현지화 적용",
-      "배경 전환 기능 추가",
-      "오브젝트 회전 기능 추가",
-      "물고기 연출 개선",
-      "상점 카테고리 개선",
-      "낚시 아이템 필터 수정",
-      "코스튬 적용 기능 추가",
-      "LP 획득 기능 추가",
-      "창고 이동 오류 수정"
+      "퀘스트 매니저 구현",
+      "퀘스트 UI 제작",
+      "낚시 연동",
+      "도감 팝업창 개선",
+      "최고 기록 표시",
+      "정렬 드롭다운 변경"
     ]
   },
   {
     id: "DEV-04",
-    title: "개발일지 #04 - 게임의 목표를 만들어가는 과정",
-    date: "2026-03-10",
-    views: 1320,
-    tag: "목표 설정",
-    category: "시스템",
-    intro: "안녕하세요.\n\n게임 내 콘텐츠가 점차 늘어나면서 플레이어가 어떤 목표를 가지고 게임을 진행해야 하는지에 대한 고민이 생겼습니다.\n낚시, 꾸미기, 수집 등 다양한 콘텐츠가 존재했지만 이를 연결해 주는 명확한 가이드가 부족하다고 판단했습니다.",
-    details: "이를 해결하기 위해 퀘스트 시스템 개발을 진행했습니다.\n퀘스트는 플레이어가 자연스럽게 콘텐츠를 경험하고 성장할 수 있도록 돕는 역할을 수행하며, 앞으로 게임 전반의 플레이 흐름을 안내하는 핵심 시스템이 될 예정입니다.\n또한 도감과 상점, 꾸미기 기능 전반에 대한 개선도 함께 진행하여 플레이 편의성을 높였습니다.",
+    title: "개발일지 #04 - 호수 시스템 확장",
+    date: "2026-03-05",
+    views: 1420,
+    intro: "안녕하세요.\n둥둥아일랜드입니다.\n\n이번 작업에서는 호수 공간을 더 다양하게 활용할 수 있도록 호수 관련 기능을 개선했습니다.\n\n기존에는 물고기가 유영하는 공간과 호수 배경의 활용 범위가 제한적이었기 때문에, 물고기 이동 필드를 호수 영역에 맞게 조정하고 호수 배경 구조를 새롭게 정리했습니다.\n또한 바다와 호수를 전환할 수 있는 기능을 추가하고, 호수 테마와 인테리어 아이템을 적용할 수 있도록 상점 및 꾸미기 기능을 함께 개선했습니다.\n\n이를 통해 플레이어가 섬뿐만 아니라 호수 주변 공간까지 자신만의 분위기로 꾸밀 수 있도록 작업했습니다.",
+    details: "",
     bullets: [
-      "퀘스트 시스템 구현",
-      "퀘스트 UI 제작",
-      "퀘스트 보상 기능 추가",
-      "낚시 콘텐츠 연동",
-      "도감 최고 기록 기능 추가",
-      "도감 정렬 기능 개선",
-      "상점 필터 기능 개선",
-      "편집 모드 저장 기능 추가",
-      "아이템 복사 오류 수정",
-      "아이템 소실 오류 수정"
+      "물고기 유영 필드 변경",
+      "호수 배경 구조 개선",
+      "호수 테마 구매/적용 기능",
+      "호수 인테리어 아이템 추가",
+      "바다-호수 토글 기능"
     ]
   },
   {
     id: "DEV-03",
-    title: "개발일지 #03 - 생활 콘텐츠 확장 이야기",
-    date: "2026-02-12",
-    views: 1680,
-    tag: "생활형 RPG",
-    category: "생활",
-    intro: "안녕하세요.\n\n이번 개발에서는 낚시 이후의 플레이 경험을 더욱 풍부하게 만들기 위한 생활 콘텐츠 확장에 집중했습니다.",
-    details: "그동안 플레이어가 획득한 물고기는 수집의 의미가 강했지만, 보다 다양한 활용 방안을 제공하기 위해 요리와 판매 시스템 개발을 진행했습니다.\n새롭게 추가된 요리 시스템을 통해 플레이어는 획득한 재료를 활용하여 다양한 음식을 제작할 수 있으며, 물고기 판매 기능을 통해 경제 활동도 경험할 수 있습니다.\n또한 코스튬 시스템을 추가하여 플레이어가 자신만의 개성을 표현할 수 있도록 준비했습니다.",
+    title: "개발일지 #03 - 섬 꾸미기 편집 모드 개선",
+    date: "2026-02-01",
+    views: 1530,
+    intro: "이번 작업에서는 꾸미기 모드에서 오브젝트를 배치하고 수정하는 과정의 불편함을 줄이는 데 집중했습니다.\n\n기존에는 장식물을 배치하거나 회수할 때 일부 오브젝트가 정상적으로 처리되지 않거나, 설치 가능 여부를 바로 확인하기 어려운 상황이 있었습니다. 이를 개선하기 위해 그리드 스냅 방식을 조정하고, 배치 불가 영역의 표시를 더 명확하게 수정했습니다.\n\n추가로 전체 회수, 저장, 초기화, 고정 건축물 교체 과정에서 발생하던 오류를 함께 수정해 꾸미기 모드의 안정성을 높였습니다.",
+    details: "",
     bullets: [
-      "요리 시스템 구현",
-      "음식 상태 관리 기능 추가",
-      "요리 창고 구현",
-      "물고기 판매 기능 추가",
-      "코스튬 구매 기능 추가",
-      "코스튬 착용 기능 추가",
-      "상점 카테고리 개선",
-      "구매 처리 구조 개선",
-      "인테리어 아이템 연동",
-      "배치 취소 기능 추가"
+      "2D 그리드 스냅 방식 변경",
+      "미리보기 오브젝트 영역 제한",
+      "편집 모드 진입 시 물고기/파티클/배경 비활성화",
+      "오브젝트 회수·초기화·저장 로직 개선"
     ]
   },
   {
     id: "DEV-02",
-    title: "개발일지 #02 - 성장 시스템과 상호작용 기능 확장",
-    date: "2026-01-05",
-    views: 1850,
-    tag: "성장 설계",
-    category: "시스템",
-    intro: "안녕하세요.\n\n이번 개발에서는 플레이어의 성장 경험을 보다 명확하게 전달하기 위한 시스템 개선 작업을 진행했습니다.\n기존에는 보관함 성장 구조와 상호작용 요소가 제한적이었기 때문에 플레이 과정에서 성장 체감이 부족한 부분이 있었습니다.",
-    details: "이를 개선하기 위해 보관함 업그레이드 기능을 추가하고, 재화 사용 구조를 정비했습니다.\n또한 오브젝트와의 상호작용 기능을 추가하여 플레이어가 환경과 보다 자연스럽게 상호작용할 수 있도록 개선했습니다.\n이번 작업을 통해 플레이어의 성장 동선과 게임 내 활동 범위를 더욱 확장할 수 있는 기반을 마련했습니다.",
+    title: "개발일지 #02 - 낚시 플레이 경험 개선",
+    date: "2026-01-10",
+    views: 1690,
+    intro: "이번 작업에서는 낚시 플레이가 더 자연스럽게 이어지도록 낚시 동작과 연출을 중심으로 개선했습니다.\n\n기존에는 낚시 과정에서 일부 동작이 어색하게 반복되거나, 장비 착용 상태가 정확히 보이지 않는 문제가 있었습니다. 이를 개선하기 위해 낚시 Cast 애니메이션을 추가하고, 낚시 사이클이 진행될 때마다 동작이 자연스럽게 이어지도록 수정했습니다.\n\n추가로 낚싯대 착용 상태, 낚시 속도 적용, 미끼와 찌 기능, 낚시바늘 이펙트를 반영해 낚시 콘텐츠의 시각적인 피드백을 강화했습니다.",
+    details: "",
     bullets: [
-      "보관함 업그레이드 기능 추가",
-      "업그레이드 UI 개선",
-      "재화 부족 안내 기능 추가",
-      "상호작용 버튼 기능 추가",
-      "상점 데이터 구조 개선",
-      "상점 썸네일 적용",
-      "창고 UI 개선",
-      "낚시 관련 버그 수정",
-      "배치 모드 안정화"
+      "낚싯대 착용",
+      "낚시 Cast 애니메이션 추가",
+      "낚시 사이클 수정",
+      "물고기 연속 획득 버그 수정",
+      "낚시찌/미끼 구현",
+      "낚시바늘 이펙트 추가"
     ]
   },
   {
     id: "DEV-01",
-    title: "개발일지 #01 - 플레이 경험 개선을 위한 첫걸음",
-    date: "2025-11-25",
-    views: 2430,
-    tag: "편의성",
-    category: "시스템",
-    intro: "안녕하세요.\n\n이번 개발 기간에는 플레이어가 게임을 보다 직관적으로 즐길 수 있도록 UI와 기본 플레이 경험 개선에 집중했습니다.\n상점과 창고는 게임 내에서 가장 자주 이용하는 기능 중 하나이지만, 기존에는 원하는 아이템을 찾거나 정보를 확인하는 과정에서 다소 불편함이 있었습니다.\n이를 개선하기 위해 상점 정렬 기능과 창고 UI를 개편하고, 물고기 상세 정보 확인 기능을 추가했습니다.",
-    details: "또한 낚시 콘텐츠의 몰입감을 높이기 위해 신규 애니메이션을 적용하고 플레이어 외형 표현을 개선했습니다.\n이외에도 설정창 사운드 옵션 개선, 날씨 정보 표시 기능 추가, 충돌 판정 조정 등 다양한 개선 작업을 진행했습니다.\n앞으로도 플레이어가 더욱 자연스럽게 게임을 즐길 수 있도록 지속적으로 사용성을 개선해 나갈 예정입니다.",
+    title: "개발일지 #01 - 상점과 창고 UI 개선 작업",
+    date: "2025-11-20",
+    views: 2110,
+    intro: "이번 작업에서는 플레이 초반부터 자주 사용하게 되는 상점과 창고 UI를 우선적으로 점검했습니다.\n\n상점에서는 아이템 개수가 적을 때 슬롯이 중앙에 몰려 보이던 부분을 수정하고, 스크롤바가 항상 표시되도록 변경했습니다.\n창고에서는 빈 슬롯 표시, 물고기 설명 영역, 정렬 버튼 구조를 정리해 보유 아이템을 더 편하게 확인할 수 있도록 개선했습니다.\n\n작은 UI 수정이지만, 실제 플레이 과정에서 반복적으로 사용하는 기능인 만큼 조작 흐름이 끊기지 않도록 다듬는 데 초점을 맞췄습니다.",
+    details: "",
     bullets: [
-      "상점 정렬 기능 개선",
-      "상점 스크롤바 추가",
-      "구매 팝업 UI 개선",
-      "창고 UI 개편",
-      "물고기 상세 정보 기능 추가",
-      "낚시 애니메이션 추가",
-      "플레이어 외형 개선",
-      "설정창 기능 개선",
-      "날씨 정보 표시 기능 추가",
-      "충돌 판정 개선",
-      "각종 UI 및 인벤토리 오류 수정"
+      "상점 스크롤바 상시 표시",
+      "슬롯 정렬 변경",
+      "구매 팝업 아이콘 추가",
+      "창고 UI 슬라이드 수정",
+      "빈 슬롯 표시",
+      "물고기 설명 추가",
+      "정렬 버튼 드롭다운 통합"
     ]
   }
 ];
 
+interface DevLogTabProps {
+  portfolioMode: boolean;
+}
+
 export default function DevLogTab({ portfolioMode }: DevLogTabProps) {
-  const [selectedLogId, setSelectedLogId] = useState<string>(DEV_LOGS_DATA[0].id);
+  const [selectedLogId, setSelectedLogId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const filteredLogs = DEV_LOGS_DATA.filter((log) => {
@@ -184,149 +150,154 @@ export default function DevLogTab({ portfolioMode }: DevLogTabProps) {
            log.bullets.some(b => b.toLowerCase().includes(searchQuery.toLowerCase()));
   });
 
-  const selectedLog = DEV_LOGS_DATA.find((l) => l.id === selectedLogId) || DEV_LOGS_DATA[0];
+  const selectedLog = DEV_LOGS_DATA.find((l) => l.id === selectedLogId);
 
   return (
-    <div className="space-y-6" id="devlog-tab-container">
+    <div className="space-y-6 font-sans text-left" id="devlog-tab-container">
       
       {/* Title page header */}
-      <div className="border-b border-slate-800 pb-5 text-left">
-        <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
-          🛠️ 둥둥아일랜드 개발일지
+      <div className="border-b border-slate-800 pb-4 text-left">
+        <h2 className="text-xl font-bold text-slate-100 tracking-tight flex items-center gap-2">
+          🛠️ 개발기록 보드 (개발일지)
         </h2>
-        <p className="text-slate-400 text-xs sm:text-sm mt-1">
-          더 나은 힐링 경험을 만들어 나가는 영지 감식 개발진들의 치열한 흔적을 기록합니다.
+        <p className="text-slate-500 text-xs mt-1">
+          둥둥아일랜드의 안정성 업그레이드 조치 사항과 세부 빌드 개발 흔적을 투명하게 보고합니다.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        
-        {/* Left List Pane (5 Cols) */}
-        <div className="lg:col-span-5 space-y-4">
+      {!selectedLog ? (
+        // BOARD INDEX VIEW (Full Width list of dev diary entries)
+        <div className="space-y-4 animate-in fade-in duration-150">
           
           {/* Search Box */}
-          <div className="relative">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-500">
+          <div className="relative max-w-md">
+            <span className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
               <Search className="w-4 h-4" />
             </span>
             <input
               type="text"
-              placeholder="개발일지 제목, 내용 및 항목 검색..."
+              placeholder="빌드 일지 검색..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2.5 bg-slate-950 border border-slate-800 text-slate-200 text-sm rounded-xl focus:outline-none focus:border-sky-500/50 transition-colors"
+              className="w-full pl-9 pr-4 py-2 bg-white border border-slate-850 text-slate-800 text-xs rounded shadow-3xs focus:outline-none focus:border-indigo-500 transition-colors"
             />
           </div>
 
-          {/* List items widget */}
-          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-2 max-h-[500px] overflow-y-auto space-y-1 divide-y divide-slate-800/40">
+          {/* List items widget (single-column vertical list) */}
+          <div className="flex flex-col gap-3">
             {filteredLogs.length > 0 ? (
               filteredLogs.map((log) => {
-                const isSelected = log.id === selectedLogId;
                 return (
                   <div
                     key={log.id}
                     id={`devlog-item-${log.id}`}
                     onClick={() => setSelectedLogId(log.id)}
-                    className={`block w-full text-left p-3.5 rounded-xl transition-all cursor-pointer ${
-                      isSelected
-                        ? 'bg-slate-950 border-l-4 border-l-sky-400 shadow-md'
-                        : 'hover:bg-slate-800/40'
-                    }`}
+                    className="w-full text-left p-4 sm:p-5 bg-white border border-slate-850 hover:bg-indigo-50 hover:border-indigo-200 rounded-lg transition-all duration-200 cursor-pointer shadow-3xs hover:shadow-2xs group flex flex-col md:flex-row md:items-center justify-between gap-3 md:gap-6"
                   >
-                    <div className="flex items-center justify-between mb-1.5">
-                      <span className="text-[10px] text-slate-500 font-mono">
-                        {log.id}
-                      </span>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2 mb-2 flex-wrap">
+                        <span className="text-[10px] text-slate-500 font-mono font-bold bg-slate-100 px-2 py-0.5 rounded border border-slate-200 shrink-0">
+                          {log.id}
+                        </span>
+                        <span className="text-[10px] text-slate-400 font-mono flex items-center gap-1 shrink-0">
+                          <Calendar className="w-3 h-3 text-slate-400" /> {log.date}
+                        </span>
+                      </div>
+
+                      <h4 className="text-xs sm:text-sm font-bold leading-normal text-left text-slate-800 group-hover:text-indigo-650 transition-colors mb-1 truncate">
+                        {log.title}
+                      </h4>
+
+                      <p className="text-[11px] text-slate-600 line-clamp-1 leading-relaxed">
+                        {log.intro}
+                      </p>
                     </div>
 
-                    <h4 className={`text-xs md:text-xs font-bold tracking-tight text-left leading-normal line-clamp-2 ${
-                      isSelected ? 'text-white' : 'text-slate-300'
-                    }`}>
-                      {log.title}
-                    </h4>
-
-                    <div className="flex items-center gap-3 mt-2.5 text-[10px] text-slate-500 font-mono">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" /> {log.date}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Eye className="w-3 h-3" /> {log.views}
+                    <div className="flex items-center justify-between md:justify-end gap-6 pt-3 md:pt-0 border-t md:border-t-0 border-slate-100 md:shrink-0">
+                      <span className="text-[10px] text-slate-400 font-mono">👁️ {log.views}회 조회</span>
+                      <span className="text-[10px] text-indigo-500 font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                        자세히 읽기 <ArrowRight className="w-3 h-3" />
                       </span>
                     </div>
                   </div>
                 );
               })
             ) : (
-              <div className="py-12 text-center text-slate-500 text-xs">
-                검색 조건에 일치하는 개발일지가 없습니다.
+              <div className="py-16 bg-white border border-slate-850 rounded-lg text-center text-slate-500 text-xs font-semibold">
+                검색된 개발기록 자료가 존재하지 않습니다.
               </div>
             )}
           </div>
-
         </div>
-
-        {/* Right Detail Pane (7 Cols) */}
-        <div className="lg:col-span-7">
+      ) : (
+        // FULL THREAD READER VIEW
+        <div className="space-y-4 animate-in fade-in duration-150">
           
-          <div className="bg-slate-90/80 border border-slate-800 rounded-2xl p-5 md:p-8 space-y-6 text-left shadow-xl" id="devlog-reader">
+          {/* Back button */}
+          <button 
+            onClick={() => setSelectedLogId(null)}
+            className="px-3.5 py-1.5 text-xs text-slate-705 bg-white hover:bg-indigo-50 border border-slate-850 hover:border-indigo-200 rounded hover:text-indigo-600 flex items-center gap-1.5 transition-colors cursor-pointer font-bold shadow-sm"
+          >
+            <ArrowLeft className="w-4 h-4 text-slate-400" />
+            목록으로 돌아가기
+          </button>
+
+          <div className="bg-white border border-slate-850 rounded-lg shadow-sm" id="devlog-reader">
             
-            {/* Header info */}
-            <div className="border-b border-slate-800 pb-4">
-              <div className="flex items-center gap-2 text-[10px] text-slate-500 font-mono mb-2">
-                <span>작성자: 둥둥아일랜드 개발위원회 🎨</span>
+            {/* Header info (Clean & Bright Backdrop like PatchNote) */}
+            <div className="bg-indigo-50/30 p-6 border-b border-slate-850 text-left">
+              <div className="flex items-center gap-2 text-[10px] text-slate-600 font-mono mb-2 flex-wrap">
+                <span className="font-semibold text-indigo-700">작성: 개발본부 클라이언트팀 🛡️</span>
+                <span>• 글번호: {selectedLog.id}</span>
                 <span>• 작성일: {selectedLog.date}</span>
                 <span>• 조회수: {selectedLog.views}회</span>
               </div>
               
-              <h3 className="text-base sm:text-lg font-bold tracking-tight text-white font-sans leading-snug">
+              <h3 className="text-base sm:text-lg font-extrabold text-slate-900 leading-snug">
                 {selectedLog.title}
               </h3>
             </div>
 
             {/* Content introduction */}
-            <div className="text-xs sm:text-xs text-slate-300 leading-relaxed whitespace-pre-line font-sans">
+            <div className="p-6 text-sm sm:text-base text-slate-850 font-semibold leading-relaxed whitespace-pre-line text-left">
               {selectedLog.intro}
             </div>
 
             {/* Split Details */}
             {selectedLog.details && (
-              <div className="text-xs sm:text-xs text-slate-300 leading-relaxed whitespace-pre-line font-sans bg-slate-950/40 p-4 rounded-xl border border-slate-850/60">
+              <div className="mx-6 p-4 bg-indigo-50/20 border border-indigo-100 text-sm text-slate-800 font-semibold leading-relaxed whitespace-pre-line text-left rounded">
                 {selectedLog.details}
               </div>
             )}
 
             {/* Key list bullet highlights */}
-            <div className="bg-slate-950 p-5 rounded-2xl border border-slate-850 space-y-3">
-              <span className="text-[10px] text-indigo-400 font-bold uppercase tracking-widest block pl-1">
-                ⭐ 주요 개발 세부 내역 (Development Scope)
-              </span>
+            <div className="p-6 space-y-3 text-left">
+              {/* Category Title Heading */}
+              <h4 className="text-xs sm:text-xs font-bold text-indigo-500 flex items-center gap-1.5 bg-indigo-50/80 p-2.5 rounded border border-indigo-100 shadow-2xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0" />
+                <span className="font-sans font-extrabold tracking-tight">⭐ 개발 항목 리스트 (Technical Backlog Scope)</span>
+              </h4>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-200">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
                 {selectedLog.bullets.map((bullet, index) => (
-                  <div key={index} className="flex items-center gap-2 bg-slate-900/60 hover:bg-slate-900 border border-slate-800/60 px-3 py-2 rounded-lg transition-colors">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0" />
-                    <span className="font-semibold">{bullet}</span>
+                  <div key={index} className="flex items-start gap-2.5 bg-indigo-50/40 hover:bg-indigo-50/70 border border-indigo-100/70 px-3.5 py-2.5 rounded transition-all shadow-3xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0 mt-2" />
+                    <span className="font-bold text-slate-800 leading-relaxed text-xs">{bullet}</span>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Foot note feedback CTA */}
-            <div className="p-3 bg-indigo-950/25 rounded-xl border border-indigo-900/20 flex items-center justify-between">
-              <span className="text-[10px] text-slate-400 leading-snug">
-                📝 본 개발일지에 대해 제안이나 건의사항이 있으시면 커뮤니티에 의견을 남겨주세요.
-              </span>
-              <button className="text-[10px] text-indigo-400 font-bold hover:underline flex items-center gap-0.5 whitespace-nowrap">
-                건의 글쓰기 🐾
-              </button>
+            <div className="p-4 bg-indigo-50/30 border-t border-slate-850 flex items-center justify-between text-[11px] text-slate-600 font-medium">
+              <span className="font-semibold text-slate-800">둥둥아일랜드 개발본부 시스템 지원부</span>
+              <span className="text-emerald-800 bg-emerald-50 border border-emerald-200 text-[10px] px-2 py-0.5 rounded font-sans font-bold">검증필함</span>
             </div>
 
           </div>
 
         </div>
-
-      </div>
+      )}
 
     </div>
   );

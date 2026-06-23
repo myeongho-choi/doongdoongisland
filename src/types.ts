@@ -1,6 +1,6 @@
 export interface Notice {
   id: string;
-  category: '일반' | '점검' | '긴급' | '업데이트';
+  category: '일반' | '점검' | '긴급' | '업데이트' | '안내';
   title: string;
   date: string;
   views: number;
@@ -12,7 +12,7 @@ export interface Notice {
 export interface GameEvent {
   id: string;
   title: string;
-  type: '출석' | '성장' | '핫타임';
+  type: '출석' | '성장' | '핫타임' | '수집' | '우편';
   period: string;
   status: '진행중' | '종료';
   thumbnailUrl: string;
@@ -31,6 +31,7 @@ export interface GMNote {
   content: string;
   comments: GMComment[];
   portfolioRationale?: string;
+  images?: string[];
 }
 
 export interface GMComment {
@@ -60,6 +61,7 @@ export interface Inquiry {
   status: '접수대기' | '답변완료';
   answerText?: string;
   answeredDate?: string;
+  imageUrl?: string;
 }
 
 export interface Sanction {

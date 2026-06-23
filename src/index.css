@@ -1,58 +1,56 @@
 @import "tailwindcss";
 
 @theme {
-  /* Redefine Slate to a warm, cozy light-sepia/linen tea paper palette for LIGHT MODE */
-  --color-slate-50: #120904;
-  --color-slate-100: #1F130A;
-  --color-slate-150: #2E1E12;
-  --color-slate-200: #422D1B;
-  --color-slate-300: #5A3F29;
-  --color-slate-400: #74553B;
-  --color-slate-500: #8E6D50;
-  --color-slate-600: #A88767;
-  --color-slate-700: #C2A486;
-  --color-slate-800: #DCBFA4;
-  --color-slate-850: #E7DAC7;
-  --color-slate-900: #F2EAE1;
-  --color-slate-950: #FAF7F2;
+  /* Standard light game portal theme values mapped to Slate classes for maximum compatibility */
+  --color-slate-50: #030712;
+  --color-slate-100: #111827;
+  --color-slate-150: #1F2937;
+  --color-slate-200: #0F172A;
+  --color-slate-300: #374151;
+  --color-slate-400: #4B5563;
+  --color-slate-500: #6B7280;
+  --color-slate-600: #9CA3AF;
+  --color-slate-700: #D1D5DB;
+  --color-slate-800: #E5E7EB;
+  --color-slate-850: #E2E8F0;
+  --color-slate-900: #FFFFFF; /* All container panels become solid white cardboards */
+  --color-slate-950: #F3F4F7; /* Main portal page background becomes flat light blue-gray */
 
-  /* Redefine white to deep coffee ink to keep all text-white elements perfectly readable */
-  --color-white: #1F130A;
+  /* Ensure true white remains white */
+  --color-white: #FFFFFF;
 
-  /* Map Indigo to rich warm golden honey & sienna accents (highly readable on light background) */
-  --color-indigo-50: #fffbeb;
-  --color-indigo-100: #fef3c7;
-  --color-indigo-200: #fde68a;
-  --color-indigo-300: #fcd34d;
-  --color-indigo-400: #b45309;
-  --color-indigo-450: #d97706;
-  --color-indigo-500: #ea580c;
-  --color-indigo-550: #92400e;
-  --color-indigo-600: #78350f;
-  --color-indigo-700: #451a03;
-  --color-indigo-800: #2c0e01;
-  --color-indigo-900: #1c0a00;
-  --color-indigo-950: #fef3c7;
+  /* Classic Game Portal Accents: Vibrant skyblue & orange button presets */
+  --color-indigo-50: #EFF6FF;
+  --color-indigo-100: #DBEAFE;
+  --color-indigo-200: #BFDBFE;
+  --color-indigo-300: #93C5FD;
+  --color-indigo-400: #2563EB;
+  --color-indigo-450: #1D4ED8;
+  --color-indigo-500: #1E40AF;
+  --color-indigo-550: #1D4ED8;
+  --color-indigo-600: #1E3A8A;
+  --color-indigo-700: #172554;
+  --color-indigo-800: #0F172A;
+  --color-indigo-900: #020617;
+  --color-indigo-950: #FFFFFF;
 
-  /* Map Sky to comforting autumn orange & reddish peach tones */
-  --color-sky-50: #fff7ed;
-  --color-sky-100: #ffedd5;
-  --color-sky-200: #fed7aa;
-  --color-sky-300: #fdba74;
-  --color-sky-400: #c2410c;
-  --color-sky-500: #9a3412;
-  --color-sky-600: #7c2d12;
-  --color-sky-700: #4a1d0f;
-  --color-sky-850: #ffedd5;
+  --color-sky-50: #FFF7ED;
+  --color-sky-100: #FFEDD5;
+  --color-sky-200: #FED7AA;
+  --color-sky-300: #FDBA74;
+  --color-sky-400: #EA580C;
+  --color-sky-500: #C2410C;
+  --color-sky-600: #9A3412;
+  --color-sky-700: #7C2D12;
+  --color-sky-850: #FFEDD5;
 
-  /* Map Purple to warm, comforting rose, peach & dark berry red accents */
-  --color-purple-50: #fff1f2;
-  --color-purple-100: #ffe4e6;
-  --color-purple-200: #fecdd3;
-  --color-purple-300: #fda4af;
-  --color-purple-400: #be123c;
-  --color-purple-500: #9f1239;
-  --color-purple-600: #881337;
-  --color-purple-700: #4c0519;
-  --color-purple-950: #ffe4e6;
+  --color-purple-50: #FAF5FF;
+  --color-purple-100: #F3E8FF;
+  --color-purple-200: #E9D5FF;
+  --color-purple-300: #D8B4FE;
+  --color-purple-450: #7E22CE;
+  --color-purple-500: #6B21A8;
+  --color-purple-600: #581C87;
+  --color-purple-700: #3B0764;
+  --color-purple-950: #FAF5FF;
 }

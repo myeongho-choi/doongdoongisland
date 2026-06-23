@@ -21,32 +21,30 @@ export default function Header({ currentTab, setCurrentTab, portfolioMode, setPo
     { id: 'GM_NOTE', label: 'GM노트' },
     { id: 'FAQ', label: 'FAQ' },
     { id: 'INQUIRY', label: '1:1 문의' },
-    { id: 'POLICY', label: '운영정책' },
-    { id: 'SANCTION', label: '제재내역' },
     { id: 'COMMUNITY', label: '커뮤니티' },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-slate-950/90 border-b border-slate-800/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 w-full bg-slate-900 border-b border-slate-850 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-20">
           
           {/* Logo Brand */}
           <div 
             onClick={() => setCurrentTab('HOME')} 
-            className="flex items-center cursor-pointer group"
+            className="flex items-center cursor-pointer group py-1"
             id="header-logo-container"
           >
             <img 
               src={IMAGES.logo} 
               alt="둥둥아일랜드" 
               referrerPolicy="no-referrer"
-              className="h-10 sm:h-12 w-auto object-contain rounded-xl group-hover:scale-[1.02] transition-transform duration-300"
+              className="h-12 sm:h-14 lg:h-[58px] w-auto object-contain rounded-md group-hover:scale-[1.02] transition-transform duration-200"
             />
           </div>
 
           {/* Navigation - Main Portal Menu */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+          <nav className="hidden lg:flex items-center h-full gap-1 xl:gap-2">
             {menuItems.map((item) => {
               const isActive = currentTab === item.id;
               return (
@@ -54,10 +52,10 @@ export default function Header({ currentTab, setCurrentTab, portfolioMode, setPo
                   key={item.id}
                   id={`nav-menu-${item.id}`}
                   onClick={() => setCurrentTab(item.id)}
-                  className={`px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                  className={`px-3.5 h-16 text-sm font-semibold transition-all duration-150 flex items-center justify-center relative cursor-pointer border-b-2 ${
                     isActive
-                      ? 'bg-sky-500/10 text-sky-400 border border-sky-500/30 font-semibold'
-                      : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+                      ? 'border-indigo-600 text-indigo-600 font-bold'
+                      : 'border-transparent text-slate-300 hover:text-indigo-600 hover:border-indigo-400'
                   }`}
                 >
                   {item.label}
@@ -66,24 +64,33 @@ export default function Header({ currentTab, setCurrentTab, portfolioMode, setPo
             })}
           </nav>
 
-          {/* Empty spacer or simple ornament since portfolio controls are removed */}
+          {/* Special action menu */}
           <div className="flex items-center gap-3">
+            {portfolioMode && (
+              <button
+                onClick={() => setProfileOpen(true)}
+                className="px-3.5 py-1.5 text-xs font-bold text-yellow-300 bg-yellow-400/90 border border-yellow-500 rounded-md hover:bg-yellow-500 hover:text-white transition-all flex items-center gap-1 cursor-pointer shadow-sm animate-pulse"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>지원자 프로필 💡</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
 
       {/* Mobile Navigation Row */}
-      <div className="lg:hidden w-full bg-slate-950 border-t border-slate-900 overflow-x-auto whitespace-nowrap scrollbar-none flex gap-1 px-4 py-2">
+      <div className="lg:hidden w-full bg-slate-900 border-t border-slate-850 overflow-x-auto whitespace-nowrap scrollbar-none flex gap-1 px-4 py-2.5">
         {menuItems.map((item) => {
           const isActive = currentTab === item.id;
           return (
             <button
               key={item.id}
               onClick={() => setCurrentTab(item.id)}
-              className={`inline-block px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
+              className={`inline-block px-3 py-1.5 text-xs font-semibold rounded-md transition-all border ${
                 isActive
-                  ? 'bg-sky-500/20 text-sky-400 font-semibold'
-                  : 'text-slate-400 hover:text-white'
+                  ? 'bg-indigo-600 text-white border-indigo-600'
+                  : 'bg-slate-900 text-slate-300 border-slate-800 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200'
               }`}
             >
               {item.label}
