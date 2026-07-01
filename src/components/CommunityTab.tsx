@@ -135,7 +135,7 @@ export default function CommunityTab({ portfolioMode }: CommunityTabProps) {
                   </div>
 
                   <h3 className={`text-xs font-bold leading-normal text-left truncate ${
-                    isSelected ? 'text-indigo-400' : 'text-slate-800'
+                    isSelected ? 'text-indigo-400' : 'text-black'
                   }`}>
                     {post.title}
                   </h3>
@@ -163,7 +163,7 @@ export default function CommunityTab({ portfolioMode }: CommunityTabProps) {
                 value={newTitle}
                 onChange={(e) => setNewTitle(e.target.value)}
                 required
-                className="w-full bg-white border border-slate-855 rounded px-3 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-indigo-500"
+                className="w-full bg-white border border-slate-855 rounded px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-indigo-500"
               />
               <textarea
                 rows={3}
@@ -171,7 +171,7 @@ export default function CommunityTab({ portfolioMode }: CommunityTabProps) {
                 value={newBody}
                 onChange={(e) => setNewBody(e.target.value)}
                 required
-                className="w-full bg-white border border-slate-855 rounded p-3 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 leading-relaxed font-sans"
+                className="w-full bg-white border border-slate-855 rounded p-3 text-xs text-slate-100 focus:outline-none focus:border-indigo-500 leading-relaxed font-sans"
               />
               <button
                 type="submit"
@@ -217,7 +217,7 @@ export default function CommunityTab({ portfolioMode }: CommunityTabProps) {
               </h2>
             </div>
 
-            <p className="p-6 text-sm sm:text-base text-slate-850 font-semibold leading-relaxed bg-white border-b border-slate-850 whitespace-pre-line max-h-48 overflow-y-auto text-left font-sans">
+            <p className="p-6 text-sm sm:text-base text-black font-semibold leading-relaxed bg-white border-b border-slate-850 whitespace-pre-line max-h-48 overflow-y-auto text-left font-sans">
               {activePost.content}
             </p>
 
@@ -259,7 +259,7 @@ export default function CommunityTab({ portfolioMode }: CommunityTabProps) {
                   placeholder="공식 CM둥곰의 소통 매아리 이름으로 답변 달기..."
                   value={newReplyText}
                   onChange={(e) => setNewReplyText(e.target.value)}
-                  className="flex-1 bg-white border border-slate-855 rounded px-3 py-1.5 text-xs text-slate-800"
+                  className="flex-1 bg-white border border-slate-855 rounded px-3 py-1.5 text-xs text-slate-100"
                 />
                 <button
                   type="submit"

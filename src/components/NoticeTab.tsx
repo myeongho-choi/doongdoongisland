@@ -3,31 +3,32 @@ import { NOTICES } from '../data';
 import { Notice } from '../types';
 import { Search, Eye, Calendar, ArrowLeft, MessageSquare, Sparkles } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 const markdownComponents = {
   h3: ({ ...props }) => (
-    <h3 className="text-sm sm:text-base font-extrabold text-slate-900 mt-5 mb-2.5 flex items-center gap-1.5 border-b border-slate-200 pb-1.5" {...props} />
+    <h3 className="text-sm sm:text-base font-extrabold text-slate-900 mt-6 mb-3 flex items-center gap-1.5 border-b border-slate-200 pb-2" {...props} />
   ),
   h4: ({ ...props }) => (
-    <h4 className="text-xs sm:text-sm font-bold text-indigo-700 mt-4 mb-2" {...props} />
+    <h4 className="text-xs sm:text-sm font-bold text-indigo-700 mt-4.5 mb-2" {...props} />
   ),
   p: ({ ...props }) => (
-    <p className="text-sm sm:text-base text-slate-850 leading-relaxed my-2 font-semibold" {...props} />
+    <p className="text-[13px] sm:text-sm text-slate-800 leading-relaxed sm:leading-7 my-3 font-medium text-left whitespace-pre-line" {...props} />
   ),
   ul: ({ ...props }) => (
-    <ul className="list-disc pl-5 my-3 space-y-2 text-sm sm:text-base text-slate-850 font-semibold" {...props} />
+    <ul className="list-disc pl-5 my-4 space-y-2 text-[13px] sm:text-sm text-slate-800 font-medium text-left" {...props} />
   ),
   ol: ({ ...props }) => (
-    <ol className="list-decimal pl-5 my-3 space-y-2 text-sm sm:text-base text-slate-850 font-semibold" {...props} />
+    <ol className="list-decimal pl-5 my-4 space-y-2 text-[13px] sm:text-sm text-slate-800 font-medium text-left" {...props} />
   ),
   li: ({ ...props }) => (
-    <li className="text-sm sm:text-base text-slate-850 leading-relaxed font-semibold" {...props} />
+    <li className="text-[13px] sm:text-sm text-slate-800 leading-relaxed font-semibold text-left" {...props} />
   ),
   strong: ({ ...props }) => (
-    <strong className="font-extrabold text-indigo-700 bg-indigo-50 px-1 py-0.5 rounded" {...props} />
+    <strong className="font-bold text-indigo-650" {...props} />
   ),
   em: ({ ...props }) => (
-    <em className="italic text-slate-600" {...props} />
+    <em className="italic text-slate-600 font-medium" {...props} />
   ),
 };
 
@@ -115,7 +116,7 @@ export default function NoticeTab({ portfolioMode }: NoticeTabProps) {
                 placeholder="글 제목 혹은 내용 검색..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 pr-4 py-1.5 bg-white border border-slate-850 text-slate-800 text-xs rounded focus:outline-none focus:border-indigo-500 transition-colors"
+                className="w-full pl-9 pr-4 py-1.5 bg-white border border-slate-850 text-slate-100 text-xs rounded focus:outline-none focus:border-indigo-500 transition-colors"
               />
             </div>
 
@@ -164,7 +165,7 @@ export default function NoticeTab({ portfolioMode }: NoticeTabProps) {
                                 필독
                               </span>
                             )}
-                            <span className="text-slate-800 font-bold hover:text-indigo-600 leading-snug hover:underline">
+                            <span className="text-black font-bold hover:text-indigo-600 leading-snug hover:underline">
                               {notice.title}
                             </span>
                           </div>
@@ -256,7 +257,7 @@ export default function NoticeTab({ portfolioMode }: NoticeTabProps) {
             {/* Content body layout */}
             <div className="p-6 sm:p-8 bg-white min-h-[300px]">
               <div className="markdown-body text-left">
-                <ReactMarkdown components={markdownComponents}>
+                <ReactMarkdown components={markdownComponents} rehypePlugins={[rehypeRaw]}>
                   {selectedNotice.content}
                 </ReactMarkdown>
               </div>

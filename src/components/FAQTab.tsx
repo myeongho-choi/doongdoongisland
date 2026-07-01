@@ -49,9 +49,9 @@ export default function FAQTab({ portfolioMode }: FAQTabProps) {
                 setActiveCategory(cat);
                 setOpenFaqId(null);
               }}
-              className={`px-3 py-1 text-xs font-bold rounded border transition-colors cursor-pointer ${
+              className={`px-3 py-1.5 text-xs font-semibold rounded border transition-all cursor-pointer ${
                 activeCategory === cat
-                  ? 'bg-slate-950 text-indigo-600 border-indigo-200'
+                  ? 'bg-indigo-600 text-white border-indigo-600 font-bold'
                   : 'bg-white text-slate-400 border-slate-850 hover:bg-indigo-50 hover:text-indigo-600 hover:border-indigo-200'
               }`}
             >
@@ -73,7 +73,7 @@ export default function FAQTab({ portfolioMode }: FAQTabProps) {
               setSearchQuery(e.target.value);
               setOpenFaqId(null);
             }}
-            className="w-full pl-9 pr-4 py-1.5 bg-white border border-slate-855 text-slate-800 text-xs rounded focus:outline-none focus:border-indigo-500 transition-colors"
+            className="w-full pl-9 pr-4 py-1.5 bg-white border border-slate-855 text-slate-100 text-xs rounded focus:outline-none focus:border-indigo-500 transition-colors"
           />
         </div>
 
@@ -101,7 +101,7 @@ export default function FAQTab({ portfolioMode }: FAQTabProps) {
                 >
                   <div className="flex items-center gap-2 text-left">
                     <span className="text-indigo-650 shrink-0 font-extrabold font-mono">Q.</span>
-                    <span className="text-slate-800 tracking-tight leading-snug font-bold">
+                    <span className="text-black tracking-tight leading-snug font-bold">
                       [{faq.category}] {faq.question}
                     </span>
                   </div>
@@ -113,7 +113,7 @@ export default function FAQTab({ portfolioMode }: FAQTabProps) {
                 {/* Collapsible Answer panel */}
                 {isOpen && (
                   <div className="px-4.5 pb-4.5 text-left bg-slate-950/40 border-t border-slate-850">
-                    <p className="text-xs sm:text-sm text-slate-850 leading-relaxed font-sans whitespace-pre-line p-3 bg-white border border-slate-855 rounded font-semibold">
+                    <p className="text-xs sm:text-sm text-black leading-relaxed font-sans whitespace-pre-line p-3 bg-white border border-slate-855 rounded font-semibold">
                       {faq.answer}
                     </p>
                     

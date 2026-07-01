@@ -256,7 +256,7 @@ export default function InquiryTab({ portfolioMode }: InquiryTabProps) {
           
           {/* Inquiry Form (8 Cols) */}
           <div className="lg:col-span-8 bg-white border border-slate-850 rounded p-6 md:p-8">
-            <h3 className="text-sm sm:text-base font-bold text-slate-800 mb-6 flex items-center gap-2">
+            <h3 className="text-sm sm:text-base font-bold text-slate-100 mb-6 flex items-center gap-2">
               <Mail className="w-5 h-5 text-indigo-600" /> 새 1:1 상담 접수하기
             </h3>
 
@@ -379,7 +379,7 @@ export default function InquiryTab({ portfolioMode }: InquiryTabProps) {
 
           <div className="lg:col-span-4 space-y-4">
             <div className="bg-white border border-slate-850 rounded p-5 text-left">
-              <h4 className="text-xs font-bold text-slate-800 mb-3">💬 1:1 상담 접수 안내 사항</h4>
+              <h4 className="text-xs font-bold text-slate-100 mb-3">💬 1:1 상담 접수 안내 사항</h4>
               <ul className="space-y-2 text-[11px] text-slate-500 leading-relaxed list-disc pl-4 font-medium">
                 <li>둥둥아일랜드는 일체의 유료 결제 시스템이 없는 완벽한 무과금 방치형 힐링 게임입니다. 모든 아이템과 호수 정경은 인게임에서 자동 행동으로 획득한 골드로 상점에서 구매할 수 있습니다.</li>
                 <li>오류/버그 제보 시 문제가 발생한 특정 시점, 혹은 가방이나 상점 등의 UI 상태 정황을 소상히 공유해 주시면 큰 도움이 됩니다.</li>
@@ -401,7 +401,7 @@ export default function InquiryTab({ portfolioMode }: InquiryTabProps) {
             {/* Headers metrics */}
             <div>
               <div className="flex items-center justify-between border-b border-slate-850 pb-3 mb-3">
-                <span className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                <span className="text-xs font-bold text-slate-100 uppercase tracking-wider flex items-center gap-1.5">
                   <LayoutGrid className="w-4 h-4 text-indigo-600" /> 원격 CS 대기 대열
                 </span>
                 <span className="text-[10px] bg-slate-950 text-slate-100 px-2 py-0.5 rounded border border-slate-800 font-mono font-bold">
@@ -450,7 +450,7 @@ export default function InquiryTab({ portfolioMode }: InquiryTabProps) {
                       <span className="text-slate-500 font-mono">{t.id}</span>
                     </div>
 
-                    <h4 className="text-xs font-bold text-slate-800 truncate leading-snug">
+                    <h4 className="text-xs font-bold text-slate-100 truncate leading-snug">
                       {t.title}
                     </h4>
 
@@ -479,7 +479,7 @@ export default function InquiryTab({ portfolioMode }: InquiryTabProps) {
             <div className="bg-white border border-slate-850 rounded-lg p-5 md:p-6 text-left space-y-4">
               <div>
                 <div className="flex items-center justify-between border-b border-slate-850 pb-2 mb-3 text-xs">
-                  <div className="flex items-center gap-1.5 font-bold text-slate-800">
+                  <div className="flex items-center gap-1.5 font-bold text-slate-100">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse shrink-0" />
                     <span>활성 민원 분석: {activeTicket.id}</span>
                   </div>
@@ -488,7 +488,7 @@ export default function InquiryTab({ portfolioMode }: InquiryTabProps) {
                   </div>
                 </div>
 
-                <h3 className="text-sm font-extrabold text-slate-850 mb-2 leading-snug">
+                <h3 className="text-sm font-extrabold text-slate-100 mb-2 leading-snug">
                   {activeTicket.title}
                 </h3>
 
@@ -562,7 +562,7 @@ export default function InquiryTab({ portfolioMode }: InquiryTabProps) {
                     value={adminReplyText || (activeTicket.status === '답변완료' ? activeTicket.answerText : '')}
                     onChange={(e) => setAdminReplyText(e.target.value)}
                     disabled={activeTicket.status === '답변완료'}
-                    className="w-full bg-white border border-slate-855 rounded p-3 text-xs sm:text-xs text-slate-800 focus:outline-none focus:border-indigo-500 font-sans leading-relaxed min-h-[180px] overflow-y-auto"
+                    className="w-full bg-white border border-slate-855 rounded p-3 text-xs sm:text-xs text-slate-100 focus:outline-none focus:border-indigo-500 font-sans leading-relaxed min-h-[180px] overflow-y-auto"
                   />
                 </div>
 

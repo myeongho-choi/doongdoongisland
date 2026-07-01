@@ -15,14 +15,14 @@ export default function PatchNoteTab({ portfolioMode }: PatchNoteTabProps) {
   const renderItemLine = (item: string, index: number) => {
     if (item.startsWith('■')) {
       return (
-        <div key={index} className="text-xs sm:text-sm font-bold text-slate-900 mt-4 mb-2 flex items-center gap-1.5 border-b border-indigo-100 pb-1">
+        <div key={index} className="text-xs sm:text-sm font-bold text-black mt-4 mb-2 flex items-center gap-1.5 border-b border-indigo-100 pb-1">
           <span className="text-indigo-600 font-extrabold">▶</span>
           <span>{item.replace('■', '').trim()}</span>
         </div>
       );
     } else if (item.startsWith('  •') || item.startsWith('  -')) {
       return (
-        <li key={index} className="ml-6 py-1.5 list-none text-sm text-slate-800 flex items-start gap-1.5 font-semibold leading-relaxed">
+        <li key={index} className="ml-6 py-1.5 list-none text-sm text-black flex items-start gap-1.5 font-semibold leading-relaxed">
           <span className="text-indigo-600 font-bold shrink-0 mt-1">•</span>
           <span className="leading-snug">{item.replace('  •', '').replace('  -', '').trim()}</span>
         </li>
@@ -30,7 +30,7 @@ export default function PatchNoteTab({ portfolioMode }: PatchNoteTabProps) {
     } else {
       // General item line
       return (
-        <li key={index} className="py-1.5 list-none text-sm text-slate-800 flex items-start gap-1.5 font-semibold leading-relaxed pl-1">
+        <li key={index} className="py-1.5 list-none text-sm text-black flex items-start gap-1.5 font-semibold leading-relaxed pl-1">
           <span className="text-indigo-600 shrink-0 mt-1">•</span>
           <span className="leading-snug">{item.replace('•', '').trim()}</span>
         </li>
@@ -72,7 +72,7 @@ export default function PatchNoteTab({ portfolioMode }: PatchNoteTabProps) {
                       </span>
                     </div>
 
-                    <h4 className="text-xs sm:text-sm font-bold leading-normal text-left text-slate-800 group-hover:text-indigo-650 transition-colors mb-1 truncate">
+                    <h4 className="text-xs sm:text-sm font-bold leading-normal text-left text-black group-hover:text-indigo-650 transition-colors mb-1 truncate">
                       {patch.title}
                     </h4>
 
@@ -176,7 +176,7 @@ export default function PatchNoteTab({ portfolioMode }: PatchNoteTabProps) {
                   <span className="block text-[11px] font-bold text-indigo-500 font-mono">
                     🐾 CM 둥곰의 부드러운 코멘트
                   </span>
-                  <p className="text-xs text-slate-800 leading-relaxed font-sans font-medium whitespace-pre-line bg-white p-3 rounded-lg border border-slate-800 shadow-3xs">
+                  <p className="text-xs text-black leading-relaxed font-sans font-medium whitespace-pre-line bg-white p-3 rounded-lg border border-slate-800 shadow-3xs">
                     {selectedPatch.cmComment}
                   </p>
                 </div>

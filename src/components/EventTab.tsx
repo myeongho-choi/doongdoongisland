@@ -11,16 +11,16 @@ const markdownComponents = {
     <h4 className="text-xs sm:text-sm font-bold text-indigo-700 mt-4 mb-2" {...props} />
   ),
   p: ({ ...props }) => (
-    <p className="text-sm sm:text-base text-slate-800 leading-relaxed my-2 font-semibold" {...props} />
+    <p className="text-xs sm:text-sm text-black leading-relaxed my-2 font-semibold" {...props} />
   ),
   ul: ({ ...props }) => (
-    <ul className="list-disc pl-5 my-3 space-y-2 text-xs sm:text-sm text-slate-800 font-semibold" {...props} />
+    <ul className="list-disc pl-5 my-3 space-y-1.5 text-xs sm:text-sm text-black font-semibold" {...props} />
   ),
   ol: ({ ...props }) => (
-    <ol className="list-decimal pl-5 my-3 space-y-2 text-xs sm:text-sm text-slate-800 font-semibold" {...props} />
+    <ol className="list-decimal pl-5 my-3 space-y-1.5 text-xs sm:text-sm text-black font-semibold" {...props} />
   ),
   li: ({ ...props }) => (
-    <li className="text-xs sm:text-sm text-slate-800 leading-relaxed font-semibold" {...props} />
+    <li className="text-xs sm:text-sm text-black leading-relaxed font-semibold" {...props} />
   ),
   strong: ({ ...props }) => (
     <strong className="font-bold text-indigo-800 bg-indigo-50 border border-indigo-100 px-1.5 py-0.5 rounded" {...props} />
@@ -99,7 +99,7 @@ export default function EventTab({ portfolioMode }: EventTabProps) {
                       </span>
                     </div>
 
-                    <h3 className="text-xs sm:text-sm font-bold leading-normal text-left text-slate-800 group-hover:text-indigo-650 transition-colors mb-1 truncate">
+                    <h3 className="text-xs sm:text-sm font-bold leading-normal text-left text-black group-hover:text-indigo-650 transition-colors mb-1 truncate">
                       {evt.title}
                     </h3>
 

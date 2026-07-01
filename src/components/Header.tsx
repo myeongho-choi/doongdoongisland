@@ -20,8 +20,6 @@ export default function Header({ currentTab, setCurrentTab, portfolioMode, setPo
     { id: 'PATCH', label: '패치노트' },
     { id: 'GM_NOTE', label: 'GM노트' },
     { id: 'FAQ', label: 'FAQ' },
-    { id: 'INQUIRY', label: '1:1 문의' },
-    { id: 'COMMUNITY', label: '커뮤니티' },
   ];
 
   return (
@@ -29,40 +27,42 @@ export default function Header({ currentTab, setCurrentTab, portfolioMode, setPo
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo Brand */}
-          <div 
-            onClick={() => setCurrentTab('HOME')} 
-            className="flex items-center cursor-pointer group py-1"
-            id="header-logo-container"
-          >
-            <img 
-              src={IMAGES.logo} 
-              alt="둥둥아일랜드" 
-              referrerPolicy="no-referrer"
-              className="h-12 sm:h-14 lg:h-[58px] w-auto object-contain rounded-md group-hover:scale-[1.02] transition-transform duration-200"
-            />
-          </div>
+          <div className="flex items-center gap-6 lg:gap-10 h-full">
+            {/* Logo Brand */}
+            <div 
+              onClick={() => setCurrentTab('HOME')} 
+              className="flex items-center cursor-pointer group py-1"
+              id="header-logo-container"
+            >
+              <img 
+                src={IMAGES.logo} 
+                alt="둥둥아일랜드" 
+                referrerPolicy="no-referrer"
+                className="h-12 sm:h-14 lg:h-[58px] w-auto object-contain rounded-md group-hover:scale-[1.02] transition-transform duration-200"
+              />
+            </div>
 
-          {/* Navigation - Main Portal Menu */}
-          <nav className="hidden lg:flex items-center h-full gap-1 xl:gap-2">
-            {menuItems.map((item) => {
-              const isActive = currentTab === item.id;
-              return (
-                <button
-                  key={item.id}
-                  id={`nav-menu-${item.id}`}
-                  onClick={() => setCurrentTab(item.id)}
-                  className={`px-3.5 h-16 text-sm font-semibold transition-all duration-150 flex items-center justify-center relative cursor-pointer border-b-2 ${
-                    isActive
-                      ? 'border-indigo-600 text-indigo-600 font-bold'
-                      : 'border-transparent text-slate-300 hover:text-indigo-600 hover:border-indigo-400'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
-          </nav>
+            {/* Navigation - Main Portal Menu */}
+            <nav className="hidden lg:flex items-center h-full gap-1 xl:gap-2">
+              {menuItems.map((item) => {
+                const isActive = currentTab === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    id={`nav-menu-${item.id}`}
+                    onClick={() => setCurrentTab(item.id)}
+                    className={`px-3.5 h-16 text-sm font-semibold transition-all duration-150 flex items-center justify-center relative cursor-pointer border-b-2 ${
+                      isActive
+                        ? 'border-indigo-600 text-indigo-600 font-bold'
+                        : 'border-transparent text-slate-300 hover:text-indigo-600 hover:border-indigo-400'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
 
           {/* Special action menu */}
           <div className="flex items-center gap-3">

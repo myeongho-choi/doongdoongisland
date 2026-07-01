@@ -15,8 +15,6 @@ import DevLogTab from './components/DevLogTab';
 import EventTab from './components/EventTab';
 import GMNoteTab from './components/GMNoteTab';
 import FAQTab from './components/FAQTab';
-import InquiryTab from './components/InquiryTab';
-import CommunityTab from './components/CommunityTab';
 import PatchNoteTab from './components/PatchNoteTab';
 
 import { 
@@ -129,14 +127,14 @@ export default function App() {
               </button>
 
               <button 
-                onClick={() => setCurrentTab('INQUIRY')}
+                onClick={() => setCurrentTab('FAQ')}
                 className="p-4 bg-slate-900 border border-slate-850 hover:bg-indigo-50 hover:border-indigo-250 transition-colors flex flex-col gap-1.5 text-left cursor-pointer rounded shadow-3xs group"
               >
                 <div className="flex items-center gap-2">
-                  <span className="text-base text-yellow-500">✉️</span>
-                  <h4 className="text-xs sm:text-sm font-bold text-slate-200">1:1 CS 고객지원</h4>
+                  <span className="text-base text-yellow-500">❓</span>
+                  <h4 className="text-xs sm:text-sm font-bold text-slate-200">자주 묻는 질문 FAQ</h4>
                 </div>
-                <p className="text-[11px] text-slate-500">실시간 유저 소통 대응 센터</p>
+                <p className="text-[11px] text-slate-500">둥둥아일랜드 관련 자주 묻는 질문</p>
               </button>
             </div>
 
@@ -318,8 +316,6 @@ export default function App() {
 
         {currentTab === 'GM_NOTE' && <GMNoteTab portfolioMode={portfolioMode} />}
         {currentTab === 'FAQ' && <FAQTab portfolioMode={portfolioMode} />}
-        {currentTab === 'INQUIRY' && <InquiryTab portfolioMode={portfolioMode} />}
-        {currentTab === 'COMMUNITY' && <CommunityTab portfolioMode={portfolioMode} />}
 
       </main>
 
@@ -361,7 +357,7 @@ export default function App() {
                   <span className="text-slate-800">|</span>
                   <span className="hover:text-slate-200 cursor-pointer">청소년보호정책</span>
                   <span className="text-slate-800">|</span>
-                  <span className="hover:text-slate-200 cursor-pointer" onClick={() => setCurrentTab('INQUIRY')}>고객센터문의</span>
+                  <span className="hover:text-slate-200 cursor-pointer" onClick={() => setCurrentTab('FAQ')}>FAQ (자주 묻는 질문)</span>
                 </div>
               )}
               <p 

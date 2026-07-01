@@ -1,5 +1,33 @@
 import React, { useState } from 'react';
 import { Search, Eye, Calendar, BookOpen, Clock, FileText, ArrowRight, Sparkles, ArrowLeft } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+
+const markdownComponents = {
+  h3: ({ ...props }) => (
+    <h3 className="text-sm sm:text-base font-extrabold text-slate-900 mt-6 mb-3 flex items-center gap-1.5 border-b border-slate-200 pb-2" {...props} />
+  ),
+  h4: ({ ...props }) => (
+    <h4 className="text-xs sm:text-sm font-bold text-indigo-700 mt-4.5 mb-2" {...props} />
+  ),
+  p: ({ ...props }) => (
+    <p className="text-[13px] sm:text-sm text-slate-800 leading-relaxed sm:leading-7 my-3 font-medium text-left whitespace-pre-line" {...props} />
+  ),
+  ul: ({ ...props }) => (
+    <ul className="list-disc pl-5 my-4 space-y-2 text-[13px] sm:text-sm text-slate-800 font-medium text-left" {...props} />
+  ),
+  ol: ({ ...props }) => (
+    <ol className="list-decimal pl-5 my-4 space-y-2 text-[13px] sm:text-sm text-slate-800 font-medium text-left" {...props} />
+  ),
+  li: ({ ...props }) => (
+    <li className="text-[13px] sm:text-sm text-slate-800 leading-relaxed font-semibold text-left" {...props} />
+  ),
+  strong: ({ ...props }) => (
+    <strong className="font-bold text-indigo-650" {...props} />
+  ),
+  em: ({ ...props }) => (
+    <em className="italic text-slate-600 font-medium" {...props} />
+  ),
+};
 
 interface DevLog {
   id: string;
@@ -92,7 +120,7 @@ const DEV_LOGS_DATA: DevLog[] = [
     title: "개발일지 #03 - 섬 꾸미기 편집 모드 개선",
     date: "2026-02-01",
     views: 1530,
-    intro: "이번 작업에서는 꾸미기 모드에서 오브젝트를 배치하고 수정하는 과정의 불편함을 줄이는 데 집중했습니다.\n\n기존에는 장식물을 배치하거나 회수할 때 일부 오브젝트가 정상적으로 처리되지 않거나, 설치 가능 여부를 바로 확인하기 어려운 상황이 있었습니다. 이를 개선하기 위해 그리드 스냅 방식을 조정하고, 배치 불가 영역의 표시를 더 명확하게 수정했습니다.\n\n추가로 전체 회수, 저장, 초기화, 고정 건축물 교체 과정에서 발생하던 오류를 함께 수정해 꾸미기 모드의 안정성을 높였습니다.",
+    intro: "안녕하세요.\n둥둥아일랜드입니다.\n\n이번 작업에서는 꾸미기 모드에서 오브젝트를 배치하고 수정하는 과정의 불편함을 줄이는 데 집중했습니다.\n\n기존에는 장식물을 배치하거나 회수할 때 일부 오브젝트가 정상적으로 처리되지 않거나, 설치 가능 여부를 바로 확인하기 어려운 상황이 있었습니다. 이를 개선하기 위해 그리드 스냅 방식을 조정하고, 배치 불가 영역의 표시를 더 명확하게 수정했습니다.\n\n추가로 전체 회수, 저장, 초기화, 고정 건축물 교체 과정에서 발생하던 오류를 함께 수정해 꾸미기 모드의 안정성을 높였습니다.",
     details: "",
     bullets: [
       "2D 그리드 스냅 방식 변경",
@@ -106,7 +134,7 @@ const DEV_LOGS_DATA: DevLog[] = [
     title: "개발일지 #02 - 낚시 플레이 경험 개선",
     date: "2026-01-10",
     views: 1690,
-    intro: "이번 작업에서는 낚시 플레이가 더 자연스럽게 이어지도록 낚시 동작과 연출을 중심으로 개선했습니다.\n\n기존에는 낚시 과정에서 일부 동작이 어색하게 반복되거나, 장비 착용 상태가 정확히 보이지 않는 문제가 있었습니다. 이를 개선하기 위해 낚시 Cast 애니메이션을 추가하고, 낚시 사이클이 진행될 때마다 동작이 자연스럽게 이어지도록 수정했습니다.\n\n추가로 낚싯대 착용 상태, 낚시 속도 적용, 미끼와 찌 기능, 낚시바늘 이펙트를 반영해 낚시 콘텐츠의 시각적인 피드백을 강화했습니다.",
+    intro: "안녕하세요.\n둥둥아일랜드입니다.\n\n이번 작업에서는 낚시 플레이가 더 자연스럽게 이어지도록 낚시 동작과 연출을 중심으로 개선했습니다.\n\n기존에는 낚시 과정에서 일부 동작이 어색하게 반복되거나, 장비 착용 상태가 정확히 보이지 않는 문제가 있었습니다. 이를 개선하기 위해 낚시 Cast 애니메이션을 추가하고, 낚시 사이클이 진행될 때마다 동작이 자연스럽게 이어지도록 수정했습니다.\n\n추가로 낚싯대 착용 상태, 낚시 속도 적용, 미끼와 찌 기능, 낚시바늘 이펙트를 반영해 낚시 콘텐츠의 시각적인 피드백을 강화했습니다.",
     details: "",
     bullets: [
       "낚싯대 착용",
@@ -122,7 +150,7 @@ const DEV_LOGS_DATA: DevLog[] = [
     title: "개발일지 #01 - 상점과 창고 UI 개선 작업",
     date: "2025-11-20",
     views: 2110,
-    intro: "이번 작업에서는 플레이 초반부터 자주 사용하게 되는 상점과 창고 UI를 우선적으로 점검했습니다.\n\n상점에서는 아이템 개수가 적을 때 슬롯이 중앙에 몰려 보이던 부분을 수정하고, 스크롤바가 항상 표시되도록 변경했습니다.\n창고에서는 빈 슬롯 표시, 물고기 설명 영역, 정렬 버튼 구조를 정리해 보유 아이템을 더 편하게 확인할 수 있도록 개선했습니다.\n\n작은 UI 수정이지만, 실제 플레이 과정에서 반복적으로 사용하는 기능인 만큼 조작 흐름이 끊기지 않도록 다듬는 데 초점을 맞췄습니다.",
+    intro: "안녕하세요. 둥둥아일랜드 개발진입니다.\n\n이번에는 플레이 초반부터 자주 마주하게 되는 상점과 창고 UI를 먼저 살펴봤습니다.\n\n상점에서는 아이템 수가 적을 때 슬롯이 가운데로 몰려 보이던 부분을 조정했고, 필요한 위치를 바로 확인할 수 있도록 스크롤바가 항상 보이게 수정했습니다.\n\n창고는 보유 중인 아이템을 조금 더 편하게 확인할 수 있도록 빈 슬롯 표시와 물고기 설명 영역을 정리하고, 정렬 버튼의 구조도 함께 다듬었습니다.\n\n크게 눈에 띄는 변화는 아닐 수 있지만, 상점과 창고는 플레이 중 계속 사용하게 되는 기능인 만큼 작은 불편함도 줄여보고자 했습니다.\n\n앞으로도 섬지기 여러분이 더 편하게 플레이할 수 있도록 자주 사용하는 화면부터 차근차근 개선해 나가겠습니다.",
     details: "",
     bullets: [
       "상점 스크롤바 상시 표시",
@@ -179,7 +207,7 @@ export default function DevLogTab({ portfolioMode }: DevLogTabProps) {
               placeholder="빌드 일지 검색..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 bg-white border border-slate-850 text-slate-800 text-xs rounded shadow-3xs focus:outline-none focus:border-indigo-500 transition-colors"
+              className="w-full pl-9 pr-4 py-1.5 bg-white border border-slate-850 text-slate-100 text-xs rounded focus:outline-none focus:border-indigo-500 transition-colors"
             />
           </div>
 
@@ -204,7 +232,7 @@ export default function DevLogTab({ portfolioMode }: DevLogTabProps) {
                         </span>
                       </div>
 
-                      <h4 className="text-xs sm:text-sm font-bold leading-normal text-left text-slate-800 group-hover:text-indigo-650 transition-colors mb-1 truncate">
+                      <h4 className="text-xs sm:text-sm font-bold leading-normal text-left text-black group-hover:text-indigo-650 transition-colors mb-1 truncate">
                         {log.title}
                       </h4>
 
@@ -236,64 +264,72 @@ export default function DevLogTab({ portfolioMode }: DevLogTabProps) {
           {/* Back button */}
           <button 
             onClick={() => setSelectedLogId(null)}
-            className="px-3.5 py-1.5 text-xs text-slate-705 bg-white hover:bg-indigo-50 border border-slate-850 hover:border-indigo-200 rounded hover:text-indigo-600 flex items-center gap-1.5 transition-colors cursor-pointer font-bold shadow-sm"
+            className="px-3.5 py-1.5 text-xs text-slate-705 bg-white hover:bg-slate-50 border border-slate-850 hover:border-indigo-200 rounded hover:text-indigo-600 flex items-center gap-1.5 transition-colors cursor-pointer font-bold shadow-sm"
           >
             <ArrowLeft className="w-4 h-4 text-slate-400" />
             목록으로 돌아가기
           </button>
 
-          <div className="bg-white border border-slate-850 rounded-lg shadow-sm" id="devlog-reader">
+          <div className="bg-white border border-slate-850 rounded overflow-hidden shadow-sm" id="devlog-reader">
             
-            {/* Header info (Clean & Bright Backdrop like PatchNote) */}
-            <div className="bg-indigo-50/30 p-6 border-b border-slate-850 text-left">
-              <div className="flex items-center gap-2 text-[10px] text-slate-600 font-mono mb-2 flex-wrap">
-                <span className="font-semibold text-indigo-700">작성: 개발본부 클라이언트팀 🛡️</span>
-                <span>• 글번호: {selectedLog.id}</span>
-                <span>• 작성일: {selectedLog.date}</span>
-                <span>• 조회수: {selectedLog.views}회</span>
+            {/* Thread Header - Styled identical to NoticeTab */}
+            <div className="bg-slate-950 p-6 border-b border-slate-850 text-left">
+              <div className="flex items-center gap-2.5 mb-2.5 flex-wrap">
+                <span className="px-2.5 py-0.5 text-[10px] font-bold rounded bg-indigo-50 text-indigo-700">
+                  DEVELOPER LOG
+                </span>
+                <span className="text-[11px] text-slate-500 font-semibold font-mono">
+                  글번호: {selectedLog.id}
+                </span>
+                <span className="text-slate-700">|</span>
+                <span className="text-[11px] text-slate-500 font-semibold">
+                  작성자: 공식 개발진
+                </span>
               </div>
-              
-              <h3 className="text-base sm:text-lg font-extrabold text-slate-900 leading-snug">
+              <h3 className="text-base sm:text-lg font-bold text-slate-100 leading-snug">
                 {selectedLog.title}
               </h3>
-            </div>
-
-            {/* Content introduction */}
-            <div className="p-6 text-sm sm:text-base text-slate-850 font-semibold leading-relaxed whitespace-pre-line text-left">
-              {selectedLog.intro}
-            </div>
-
-            {/* Split Details */}
-            {selectedLog.details && (
-              <div className="mx-6 p-4 bg-indigo-50/20 border border-indigo-100 text-sm text-slate-800 font-semibold leading-relaxed whitespace-pre-line text-left rounded">
-                {selectedLog.details}
-              </div>
-            )}
-
-            {/* Key list bullet highlights */}
-            <div className="p-6 space-y-3 text-left">
-              {/* Category Title Heading */}
-              <h4 className="text-xs sm:text-xs font-bold text-indigo-500 flex items-center gap-1.5 bg-indigo-50/80 p-2.5 rounded border border-indigo-100 shadow-2xs">
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0" />
-                <span className="font-sans font-extrabold tracking-tight">⭐ 개발 항목 리스트 (Technical Backlog Scope)</span>
-              </h4>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
-                {selectedLog.bullets.map((bullet, index) => (
-                  <div key={index} className="flex items-start gap-2.5 bg-indigo-50/40 hover:bg-indigo-50/70 border border-indigo-100/70 px-3.5 py-2.5 rounded transition-all shadow-3xs">
-                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0 mt-2" />
-                    <span className="font-bold text-slate-800 leading-relaxed text-xs">{bullet}</span>
-                  </div>
-                ))}
+              
+              <div className="flex items-center gap-4 mt-3 text-[11px] text-slate-500 font-mono border-t border-slate-800 pt-3">
+                <span className="flex items-center gap-1">
+                  <Calendar className="w-3.5 h-3.5" /> 등록일: {selectedLog.date}
+                </span>
+                <span className="flex items-center gap-1">
+                  <Eye className="w-3.5 h-3.5" /> 조회수: {selectedLog.views.toLocaleString()}
+                </span>
               </div>
             </div>
 
-            {/* Foot note feedback CTA */}
-            <div className="p-4 bg-indigo-50/30 border-t border-slate-850 flex items-center justify-between text-[11px] text-slate-600 font-medium">
-              <span className="font-semibold text-slate-800">둥둥아일랜드 개발본부 시스템 지원부</span>
-              <span className="text-emerald-800 bg-emerald-50 border border-emerald-200 text-[10px] px-2 py-0.5 rounded font-sans font-bold">검증필함</span>
+            {/* Content body layout - Styled identical to NoticeTab */}
+            <div className="p-6 sm:p-8 bg-white min-h-[300px]">
+              <div className="markdown-body text-left">
+                <ReactMarkdown components={markdownComponents}>
+                  {`${selectedLog.intro}
+
+${selectedLog.details ? `### 🔍 세부 분석 및 구현 내역\n${selectedLog.details}` : ''}
+
+### 🚧 개발 세부 리스트
+${selectedLog.bullets.map(b => `* **${b}**`).join('\n')}`}
+                </ReactMarkdown>
+              </div>
             </div>
 
+            {/* Official seal footer layout - Styled identical to NoticeTab */}
+            <div className="p-4 bg-slate-950 border-t border-slate-850 flex flex-col sm:flex-row justify-between items-center text-xs gap-3">
+              <span className="text-slate-500 font-mono font-medium">
+                Dungdung Island Official Portal Service Engine. All rights reserved.
+              </span>
+              <span className="text-[10px] text-emerald-800 font-bold px-2 py-0.5 rounded bg-emerald-50 border border-emerald-300">
+                작성 부서: 개발본부 클라이언트팀
+              </span>
+            </div>
+
+          </div>
+
+          {/* Foot note feedback CTA feedback copy */}
+          <div className="p-4 bg-indigo-50/30 border border-slate-850 rounded flex items-center justify-between text-[11px] text-slate-600 font-medium">
+            <span className="font-semibold text-slate-100">둥둥아일랜드 개발본부 시스템 지원부</span>
+            <span className="text-emerald-800 bg-emerald-50 border border-emerald-200 text-[10px] px-2 py-0.5 rounded font-sans font-bold">검증필함</span>
           </div>
 
         </div>

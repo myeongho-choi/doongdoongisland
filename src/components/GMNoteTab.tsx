@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import { GMNUTES, IMAGES } from '../data';
 import { GMComment } from '../types';
 import { Heart, MessageCircle, Eye, Calendar, Sparkles, Send, ShieldCheck, ArrowLeft } from 'lucide-react';
@@ -77,7 +78,7 @@ export default function GMNoteTab({ portfolioMode }: GMNoteTabProps) {
     if (!images || images.length === 0) {
       return (
         <div className="text-black leading-relaxed font-semibold text-xs sm:text-sm">
-          <ReactMarkdown components={markdownComponents}>{text}</ReactMarkdown>
+          <ReactMarkdown components={markdownComponents} rehypePlugins={[rehypeRaw]}>{text}</ReactMarkdown>
         </div>
       );
     }
@@ -113,9 +114,23 @@ export default function GMNoteTab({ portfolioMode }: GMNoteTabProps) {
                   </div>
                   {/* Subtle, highly integrated caption */}
                   <div className="text-center mt-2.5 text-xs text-slate-700 font-extrabold">
-                    {imgIndex === 0 && "📸 [꾸미기 화면 예시] WASD 카메라 이동 및 꽃밭 가든 연출 (Group 28)"}
-                    {imgIndex === 1 && "📸 [배치 격자 예시] 가구 바닥 그리드 격자 및 배치 가이드 (Group 29)"}
-                    {imgIndex === 2 && "📸 [메뉴 제어 예시] 배치된 오브젝트 회수, 이동, 회전 Context UI (Group 30)"}
+                    {selectedNote?.id === 'GM-02' ? (
+                      <>
+                        {imgIndex === 0 && "📸 [상점 카테고리 필터 예시] 꾸미기 아이템 세부 분류 선택 화면"}
+                        {imgIndex === 1 && "📸 [상점 정렬 기능 예시] 보유 상태 및 가격 기준 정렬 화면"}
+                      </>
+                    ) : selectedNote?.id === 'GM-01' ? (
+                      <>
+                        {imgIndex === 0 && "📸 [도움말 화면 예시] 주요 기능 안내 및 화면별 가이드 1"}
+                        {imgIndex === 1 && "📸 [도움말 화면 예시] 주요 기능 안내 및 화면별 가이드 2"}
+                      </>
+                    ) : (
+                      <>
+                        {imgIndex === 0 && "📸 [꾸미기 화면 예시] WASD 카메라 이동 및 꽃밭 가든 연출 (Group 28)"}
+                        {imgIndex === 1 && "📸 [배치 격자 예시] 가구 바닥 그리드 격자 및 배치 가이드 (Group 29)"}
+                        {imgIndex === 2 && "📸 [메뉴 제어 예시] 배치된 오브젝트 회수, 이동, 회전 Context UI (Group 30)"}
+                      </>
+                    )}
                   </div>
                 </div>
               );
@@ -126,7 +141,7 @@ export default function GMNoteTab({ portfolioMode }: GMNoteTabProps) {
           if (!part) return null;
           return (
             <div key={index} className="text-black leading-relaxed font-semibold text-xs sm:text-sm">
-              <ReactMarkdown components={markdownComponents}>{part}</ReactMarkdown>
+              <ReactMarkdown components={markdownComponents} rehypePlugins={[rehypeRaw]}>{part}</ReactMarkdown>
             </div>
           );
         })}
@@ -178,7 +193,7 @@ export default function GMNoteTab({ portfolioMode }: GMNoteTabProps) {
                     <span className="text-xs text-slate-400 font-mono">ID: {note.id}</span>
                   </div>
 
-                  <h3 className="text-sm font-bold text-slate-800 hover:text-indigo-600 truncate hover:underline">
+                  <h3 className="text-sm font-bold text-black hover:text-indigo-600 truncate hover:underline">
                     {note.title}
                   </h3>
                   
@@ -248,9 +263,8 @@ export default function GMNoteTab({ portfolioMode }: GMNoteTabProps) {
                 </h3>
               </div>
 
-              {/* Note Content */}
               <div className="p-6 sm:p-8 bg-white min-h-[260px] border-b border-slate-850">
-                <div className="text-xs sm:text-sm text-slate-800 leading-relaxed font-sans">
+                <div className="text-xs sm:text-sm text-black leading-relaxed font-sans">
                   {renderContentWithImages(selectedNote.content, selectedNote.images)}
                 </div>
               </div>
@@ -276,7 +290,7 @@ export default function GMNoteTab({ portfolioMode }: GMNoteTabProps) {
 
             {/* Forum-style Comment list */}
             <div className="bg-white border border-slate-850 rounded p-6" id="gmnote-comment-section">
-              <h4 className="text-xs font-bold text-slate-800 mb-4 flex items-center gap-2 uppercase tracking-wide">
+              <h4 className="text-xs font-bold text-slate-100 mb-4 flex items-center gap-2 uppercase tracking-wide">
                 <MessageCircle className="w-4 h-4 text-indigo-600" /> 유저 덧글 피드백 ({comments.length}개)
               </h4>
 
@@ -287,7 +301,7 @@ export default function GMNoteTab({ portfolioMode }: GMNoteTabProps) {
                   placeholder="따뜻한 비판이나 칭찬 한 칸 남기기..."
                   value={newCommentText}
                   onChange={(e) => setNewCommentText(e.target.value)}
-                  className="flex-1 bg-white border border-slate-850 rounded px-3 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-indigo-500 transition-colors"
+                  className="flex-1 bg-white border border-slate-850 rounded px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-indigo-500 transition-colors"
                 />
                 <button
                   type="submit"
@@ -317,7 +331,7 @@ export default function GMNoteTab({ portfolioMode }: GMNoteTabProps) {
                           <ShieldCheck className="w-3.5 h-3.5" />
                           <span>GM 둥곰의 정안 메아리</span>
                         </div>
-                        <p className="text-xs text-slate-800 leading-relaxed font-sans font-medium">
+                        <p className="text-xs text-black leading-relaxed font-sans font-medium">
                           {comment.gmReply}
                         </p>
                       </div>
@@ -393,7 +407,7 @@ export default function GMNoteTab({ portfolioMode }: GMNoteTabProps) {
               <span className="text-[11px] text-slate-400 font-semibold">닫으려면 화면의 아무 곳이나 클릭해 주세요.</span>
               <button 
                 onClick={() => setLightboxUrl(null)}
-                className="px-3 py-1 bg-white hover:bg-slate-50 border border-slate-200 rounded text-xs font-bold text-slate-800 cursor-pointer"
+                className="px-3 py-1 bg-white hover:bg-slate-50 border border-slate-200 rounded text-xs font-bold text-black cursor-pointer"
               >
                 닫기
               </button>

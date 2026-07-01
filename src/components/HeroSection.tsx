@@ -14,31 +14,40 @@ export default function HeroSection({ setCurrentTab, portfolioMode }: HeroSectio
 
   const slides = [
     {
-      title: "구름 속 호수 대규모 솜결 업데이트!",
-      subtitle: "신비한 퍼플 분수 및 일괄 가구 회수 기능 전격 추가",
-      badge: "NEW UPDATE",
+      title: "둥둥 LP 수집 이벤트 안내",
+      subtitle: "낚시를 통해 특별한 LP를 수집해 보세요!",
+      badge: "EVENT",
       badgeColor: "bg-purple-500/20 text-purple-300 border-purple-500/30",
-      tabLink: "NOTICE",
-      desc: "귀찮은 호수 정리는 이제 옛말! 버튼 한 번으로 300개의 꾸미기 타일을 인벤토리 상자 속으로 정렬해보세요.",
+      tabLink: "EVENT",
+      desc: "이벤트 기간 동안 낚시를 진행하면 일정 확률로 LP를 획득할 수 있습니다. LP를 모아 고급 인광 찌와 클래식 목재 축음기 스피커를 획득해 보세요!",
       image: IMAGES.hero
     },
     {
-      title: "신입 세입자 정원사 특별 7일 선물 패스",
-      subtitle: "매일 도장을 찍고 레전더리 [잠꾸러기 GM둥곰 인형] 받기",
+      title: "OBT 참여 감사 선물 지급 안내",
+      subtitle: "모든 섬지기 여러분께 감사의 마음을 담은 선물!",
       badge: "EVENT",
       badgeColor: "bg-cyan-500/20 text-cyan-300 border-cyan-500/30",
       tabLink: "EVENT",
-      desc: "아늑한 보금자리를 가꿀 수 있도록 보석 200개와 레전더리 벽난로 세트를 무조건 드립니다!",
+      desc: "접속만 해도 골드 꾸러미 5,000 Gold, 둥곰이 소파 체어, 그리고 최상급 야광 미끼 50개를 전원 우편함으로 즉시 드립니다.",
       image: IMAGES.hero2
     },
     {
-      title: "클린한 둥둥랜드를 위한 캠페인 돌입",
-      subtitle: "매너 배지 등록 및 1,200종 불법 스팸 키워드 필터 정비",
-      badge: "CAMPAIGN",
+      title: "나만의 둥둥아일랜드 꾸미기 이벤트",
+      subtitle: "섬과 호수를 자유롭게 꾸미고, 나만의 공간을 자랑해 주세요!",
+      badge: "EVENT",
       badgeColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
-      tabLink: "NOTICE",
-      desc: "타인을 비하하는 혐오 채팅 방명록은 가차 없이 정화! 착한 유저 둥이님께 프로필 구름 이슬 스페셜을 추천합니다.",
+      tabLink: "EVENT",
+      desc: "이벤트 참여 필수 해시태그 #MyDongDongIsland 와 함께 스크린샷을 등록해 주시면 참여 보상과 함께 우수작 보상을 드립니다.",
       image: IMAGES.hero3
+    },
+    {
+      title: "신규 유저분들 정착 지원 이벤트",
+      subtitle: "처음 시작하는 신입 섬지기를 위한 파격적인 지원!",
+      badge: "EVENT",
+      badgeColor: "bg-indigo-500/20 text-indigo-300 border-indigo-500/30",
+      tabLink: "EVENT",
+      desc: "매일 게임에 접속하여 도움말을 3회 이상 확인하면 초기 지원 선물팩, 출석 보상, 보관함 업그레이드 아이템을 모두 우편함으로 드립니다.",
+      image: IMAGES.hero
     }
   ];
 
